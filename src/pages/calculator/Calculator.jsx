@@ -128,6 +128,7 @@ const Calculator = () => {
           )}
         </div>
         <div className="padCalculator">
+          <button>ON</button>
           <div className="numberBtnCalculator">
             <button onClick={() => handleClick("1")}>1</button>
             <button onClick={() => handleClick("2")}>2</button>
