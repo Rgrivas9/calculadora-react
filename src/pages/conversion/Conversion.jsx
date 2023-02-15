@@ -7,6 +7,9 @@ const Conversion = () => {
     setPage("conversion");
   }, [page]);
   localStorage.setItem("pageCalc", "conversion");
-  return <h1>{page}</h1>;
+
+  return (
+    <h1>{page}</h1>
+  );
 };
 export default Conversion;

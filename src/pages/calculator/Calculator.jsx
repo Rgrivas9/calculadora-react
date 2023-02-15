@@ -64,6 +64,7 @@ const Calculator = () => {
             <button onClick={() => handleClick("8")}>8</button>
             <button onClick={() => handleClick("9")}>9</button>
             <button onClick={() => handleClick("0")}>0</button>
+            <button onClick={() => handleClick(".")}>.</button>
             <button onClick={() => erase()}>C</button>
             <button onClick={() => delet()}>DEL</button>
           </div>
@@ -77,6 +78,7 @@ const Calculator = () => {
             <button onClick={() => handleClick("π")}>π</button>
             <button onClick={() => handleClick("(")}>(</button>
             <button onClick={() => handleClick(")")}>)</button>
+            <button onClick={() => handleClick(complete.toString())}>ans</button>
             <button
               onClick={() => {
                 setComplete(
