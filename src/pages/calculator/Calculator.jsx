@@ -19,7 +19,9 @@ const Calculator = () => {
     setprevInput(tempInput);
   }, [prevcomplete]);
   const handleClick = (value) => {
-    if (input!=''){settempInput(input)};
+    if (input != "") {
+      settempInput(input);
+    }
     setInput((input += value));
     setOperate((toOperate += value));
     setOperate((toOperate += ","));
@@ -33,13 +35,86 @@ const Calculator = () => {
   };
   const delet = () => {
     settempInput(input);
-    setInput(input.slice(0, input.length - 1));
-    setOperate(toOperate.slice(0, toOperate.length - 2));
-    if (input!=''){setprevComplete(complete)};
+    if (input[input.length - 1] != "r") {
+      setInput(input.slice(0, input.length - 1));
+      setOperate(toOperate.slice(0, toOperate.length - 2));
+    }
+    if (input[input.length - 1] == "r") {
+      setInput(input.slice(0, input.length - 11));
+      setOperate(toOperate.slice(0, toOperate.length - 12));
+    }
+    if (input != "") {
+      setprevComplete(complete);
+    }
   };
-
+  const keyboardListener = (ev) => {
+    if (ev.which == 96 || ev.which == 48) {
+      handleClick("0");
+    }
+    if (ev.which == 97 || ev.which == 49) {
+      handleClick("1");
+    }
+    if (ev.which == 98 || ev.which == 50) {
+      handleClick("2");
+    }
+    if (ev.which == 99 || ev.which == 51) {
+      handleClick("3");
+    }
+    if (ev.which == 100 || ev.which == 52) {
+      handleClick("4");
+    }
+    if (ev.which == 101 || ev.which == 53) {
+      handleClick("5");
+    }
+    if (ev.which == 102 || ev.which == 54) {
+      handleClick("6");
+    }
+    if (ev.which == 103 || ev.which == 55) {
+      handleClick("7");
+    }
+    if (ev.which == 104 || ev.which == 56) {
+      if (ev.shiftKey == false) {
+        handleClick("8");
+      }
+    }
+    if (ev.which == 105 || ev.which == 57) {
+      if (ev.shiftKey == false) {
+        handleClick("9");
+      }
+    }
+    if (ev.which == 8) {
+      delet();
+    }
+    if (ev.which == 46) {
+      erase();
+    }
+    if (ev.which == 56 && ev.shiftKey) {
+      handleClick("(");
+    }
+    if (ev.which == 57 && ev.shiftKey) {
+      handleClick(")");
+    }
+    if (ev.which == 110 || ev.which == 190) {
+      handleClick(".");
+    }
+    if (ev.which == 107) {
+      handleClick("+");
+    }
+    if (ev.which == 109) {
+      handleClick("-");
+    }
+    if (ev.which == 111) {
+      handleClick("/");
+    }
+    if (ev.which == 106) {
+      handleClick("*");
+    }
+    if (ev.which == 13) {
+      setComplete(operations(toOperate.slice(0, toOperate.length - 1)));
+    }
+  };
   return (
-    <main>
+    <main onKeyDown={(ev) => keyboardListener(ev)} tabIndex="0" autoFocus>
       <h1>{page}</h1>
       <nav></nav>
       <section>
@@ -78,7 +153,9 @@ const Calculator = () => {
             <button onClick={() => handleClick("π")}>π</button>
             <button onClick={() => handleClick("(")}>(</button>
             <button onClick={() => handleClick(")")}>)</button>
-            <button onClick={() => handleClick(complete.toString())}>ans</button>
+            <button onClick={() => handleClick(complete.toString())}>
+              ans
+            </button>
             <button
               onClick={() => {
                 setComplete(
@@ -94,4 +171,5 @@ const Calculator = () => {
     </main>
   );
 };
+
 export default Calculator;

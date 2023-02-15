@@ -13,9 +13,6 @@ const Header = () => {
       {page !== "exchange" && (
         <button onClick={() => navigate("/exchange")}>Exchange</button>
       )}
-      {page !== "conversion" && (
-        <button onClick={() => navigate("/conversion")}>Conversion</button>
-      )}
     </header>
   );
 };
