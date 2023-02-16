@@ -1,7 +1,6 @@
 const operations = (string) => {
   const list = string.split(",");
   const listComplete = replace(completeList(fullNumberList(list)));
-  console.log(listComplete);
   try {
     const result = eval(listComplete.join(''))
   } catch (error) {
