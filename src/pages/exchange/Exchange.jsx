@@ -1,6 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { PageContext } from "../../context/pageContext";
 import SelectExchange from "../../components/SelectExchange";
+import './exchangue.css'
 const Exchange = () => {
   const { page, setPage } = useContext(PageContext);
   useEffect(() => {
@@ -52,7 +53,7 @@ const Exchange = () => {
     }
   };
   return (
-    <main>
+    <main className="mainExchange">
       <h1>Currency converter</h1>
       <section>
         <div ref={type1}>

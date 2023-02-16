@@ -1,0 +1,34 @@
+.mainExchange {
+  height: 93vh;
+  display: flex;
+  flex-direction: column;
+  gap: 15vh;
+  padding-top: 10vh;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mainExchange select {
+  padding: 0.1rem 0.2rem;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: wheat;
+}
+.mainExchange input {
+  padding: 0.15rem 0.2rem;
+  border: none;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.644);
+  color: wheat;
+  margin: 0.2rem;
+}
+.mainExchange section div {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+.mainExchange h4 {
+  margin-top: 5vh;
+}

@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { PageContext } from "../../context/pageContext";
 import operations from "../../utils/operations";
-
+import "./calculator.css";
 const Calculator = () => {
   const { page, setPage } = useContext(PageContext);
   useEffect(() => {
     setPage("calculator");
   }, [page]);
   localStorage.setItem("pageCalc", "calculator");
-
+  const [hidden, setHidden] = useState(true);
   let [input, setInput] = useState("");
   let [toOperate, setOperate] = useState("");
   let [complete, setComplete] = useState(0);
@@ -114,58 +114,74 @@ const Calculator = () => {
     }
   };
   return (
-    <main onKeyDown={(ev) => keyboardListener(ev)} tabIndex="0" autoFocus>
-      <h1>{page}</h1>
-      <nav></nav>
+    <main
+      onKeyDown={(ev) => keyboardListener(ev)}
+      tabIndex="0"
+      className="mainCalculator"
+    >
+      <h1>Calculator</h1>
       <section>
-        <div className="screenCalculator">
-          <h3 className="inputCalculator">{input}</h3>
-          <h3>{complete}</h3>
-          {prevInput != "" && (
-            <h3>
-              {prevInput}={prevcomplete}
+        <div className="calculator">
+          <div className="screenCalculator">
+            <h3 className={hidden == false ? "inputCalculator" : "off"}>
+              {input}
             </h3>
-          )}
-        </div>
-        <div className="padCalculator">
-          <button>ON</button>
-          <div className="numberBtnCalculator">
-            <button onClick={() => handleClick("1")}>1</button>
-            <button onClick={() => handleClick("2")}>2</button>
-            <button onClick={() => handleClick("3")}>3</button>
-            <button onClick={() => handleClick("4")}>4</button>
-            <button onClick={() => handleClick("5")}>5</button>
-            <button onClick={() => handleClick("6")}>6</button>
-            <button onClick={() => handleClick("7")}>7</button>
-            <button onClick={() => handleClick("8")}>8</button>
-            <button onClick={() => handleClick("9")}>9</button>
-            <button onClick={() => handleClick("0")}>0</button>
-            <button onClick={() => handleClick(".")}>.</button>
-            <button onClick={() => erase()}>C</button>
-            <button onClick={() => delet()}>DEL</button>
+            <h3 className={hidden == false ? "completeCalculator" : "off"}>
+              {complete}
+            </h3>
+            {prevInput != "" && (
+              <h3 className={hidden == false ? "prevCalculator" : "off"}>
+                {prevInput}={prevcomplete}
+              </h3>
+            )}
           </div>
-          <div className="opBtnCalculator">
-            <button onClick={() => handleClick("+")}>+</button>
-            <button onClick={() => handleClick("-")}>-</button>
-            <button onClick={() => handleClick("*")}>*</button>
-            <button onClick={() => handleClick("/")}>/</button>
-            <button onClick={() => handleClick("√")}>√</button>
-            <button onClick={() => handleClick("^")}>^</button>
-            <button onClick={() => handleClick("π")}>π</button>
-            <button onClick={() => handleClick("(")}>(</button>
-            <button onClick={() => handleClick(")")}>)</button>
-            <button onClick={() => handleClick(complete.toString())}>
-              ans
-            </button>
+          <div className="padCalculator">
             <button
+              className="onBtn"
               onClick={() => {
-                setComplete(
-                  operations(toOperate.slice(0, toOperate.length - 1))
-                );
+                setHidden(false);
               }}
             >
-              =
+              ON
             </button>
+            <div className="numberBtnCalculator">
+              <button onClick={() => handleClick("1")}>1</button>
+              <button onClick={() => handleClick("2")}>2</button>
+              <button onClick={() => handleClick("3")}>3</button>
+              <button onClick={() => handleClick("4")}>4</button>
+              <button onClick={() => handleClick("5")}>5</button>
+              <button onClick={() => handleClick("6")}>6</button>
+              <button onClick={() => handleClick("7")}>7</button>
+              <button onClick={() => handleClick("8")}>8</button>
+              <button onClick={() => handleClick("9")}>9</button>
+              <button onClick={() => handleClick("0")}>0</button>
+              <button onClick={() => handleClick(".")}>.</button>
+              <button onClick={() => delet()}>DEL</button>
+            </div>
+            <div className="opBtnCalculator">
+              <button onClick={() => erase()}>C</button>
+              <button onClick={() => handleClick("+")}>+</button>
+              <button onClick={() => handleClick("-")}>-</button>
+              <button onClick={() => handleClick("*")}>*</button>
+              <button onClick={() => handleClick("/")}>/</button>
+              <button onClick={() => handleClick("√")}>√</button>
+              <button onClick={() => handleClick("^")}>^</button>
+              <button onClick={() => handleClick("π")}>π</button>
+              <button onClick={() => handleClick("(")}>(</button>
+              <button onClick={() => handleClick(")")}>)</button>
+              <button onClick={() => handleClick(complete.toString())}>
+                ans
+              </button>
+              <button
+                onClick={() => {
+                  setComplete(
+                    operations(toOperate.slice(0, toOperate.length - 1))
+                  );
+                }}
+              >
+                =
+              </button>
+            </div>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { PageContext } from "../context/pageContext";
-
+import './header.css'
 const Header = () => {
   const navigate = useNavigate();
   const { page } = useContext(PageContext);
