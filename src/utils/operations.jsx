@@ -87,6 +87,9 @@ const replace = (list) => {
     if (element == "π") {
       list[index] = 'Math.PI';
     }
+    if (element == "π)") {
+      list[index] = 'Math.PI)';
+    }
     if (element == "√" && list[index + 1] == "(") {
       list[index] = "Math.sqrt";
     }
