@@ -19,13 +19,15 @@ const Calculator = () => {
     setprevInput(tempInput);
   }, [prevcomplete]);
   const handleClick = (value) => {
-    if (input != "") {
-      settempInput(input);
+    if (hidden == false) {
+      if (input != "") {
+        settempInput(input);
+      }
+      setInput((input += value));
+      setOperate((toOperate += value));
+      setOperate((toOperate += ","));
+      setprevComplete(complete);
     }
-    setInput((input += value));
-    setOperate((toOperate += value));
-    setOperate((toOperate += ","));
-    setprevComplete(complete);
   };
   const erase = () => {
     settempInput(input);
