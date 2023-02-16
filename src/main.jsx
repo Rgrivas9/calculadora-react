@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import Calculator from "./pages/calculator/Calculator";
-import Exchange from "./pages/exchange/exchange";
+import Exchange from "./pages/exchange/Exchange";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PageContextProvider } from "./context/pageContext";
 
